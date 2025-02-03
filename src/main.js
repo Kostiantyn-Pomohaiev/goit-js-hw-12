@@ -5,7 +5,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-// import { createMarkup } from './js/render-functions';
+import { createMarkup } from './js/render-functions';
 import { getPhotos } from './js/pixabay-api';
 
 // ===============================================
@@ -57,15 +57,15 @@ refs.form.addEventListener('submit', async e => {
       return;
     }
 
-    // refs.imgList.innerHTML = createMarkup(res.hits);
-    // if (lightbox) {
-    //   lightbox.refresh();
-    // } else {
-    //   lightbox = new SimpleLightbox('.gallery-link', {
-    //     captionsData: 'alt',
-    //     captionDelay: 250,
-    //   });
-    // }
+    refs.imgList.innerHTML = createMarkup(res.hits);
+    if (lightbox) {
+      lightbox.refresh();
+    } else {
+      lightbox = new SimpleLightbox('.gallery-link', {
+        captionsData: 'alt',
+        captionDelay: 250,
+      });
+    }
 
     if (res.totalHits > perPage) {
       showMoreBtn();
